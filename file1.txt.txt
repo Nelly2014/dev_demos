@@ -1,0 +1,2 @@
+Hi  i am learning git command
+Here i learn config command
