@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Banking System</h1>
+
+        <div class="form-group">
+            <label for="accountNumber">Account Number:</label>
+            <input type="text" id="accountNumber">
+        </div>
+        <div class="form-group">
+            <label for="balance">Initial Balance:</label>
+            <input type="number" id="balance">
+        </div>
+        <button onclick="createAccount()">Create Account</button>
+
+        <div class="form-group">
+            <label for="transferFrom">Transfer From (Account Number):</label>
+            <input type="text" id="transferFrom">
+        </div>
+        <div class="form-group">
+            <label for="transferTo">Transfer To (Account Number):</label>
+            <input type="text" id="transferTo">
+        </div>
+        <div class="form-group">
+            <label for="amount">Transfer Amount:</label>
+            <input type="number" id="amount">
+        </div>
+        <button onclick="transfer()">Transfer</button>
+
+        <div class="form-group">
+            <label for="checkBalanceNumber">Check Balance (Account Number):</label>
+            <input type="text" id="checkBalanceNumber">
+        </div>
+        <button onclick="checkBalance()">Check Balance</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const bank = {
+            accounts: {},
+
+            addAccount(number, balance) {
+                this.accounts[number] = { balance: balance };
+                return `Account  $${number} created with balance $${balance}.`;
+            },
+
+            transfer(from, to, amount) {
+                if (!this.accounts[from] || !this.accounts[to]) {
+                    return 'One or both accounts not found.';
+                }
+                if (this.accounts[from].balance < amount) {
+                    return 'Insufficient funds.';
+                }
+                this.accounts[from].balance -= amount;
+                this.accounts[to].balance += amount;
+                return `Transfer successful: $${amount} from $${from} to $${to}.`;
+            },
+
+            checkBalance(number) {
+                if (!this.accounts[number]) {
+                    return 'Account not found.';
+                }
+                return `Balance for account $${number}: $${this.accounts[number].balance}.`;
+            }
+        };
+
+        function createAccount() {
+            const accountNumber = document.getElementById('accountNumber').value;
+            const balance = parseFloat(document.getElementById('balance').value);
+            const result = bank.addAccount(accountNumber, balance);
+            displayResult(result);
+        }
+
+        function transfer() {
+            const from = document.getElementById('transferFrom').value;
+            const to = document.getElementById('transferTo').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const result = bank.transfer(from, to, amount);
+            displayResult(result);
+        }
+
+        function checkBalance() {
+            const accountNumber = document.getElementById('checkBalanceNumber').value;
+            const result = bank.checkBalance(accountNumber);
+            displayResult(result);
+        }
+
+        function displayResult(message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+        }
+    </script>
+</body>
+</html>
+
 
