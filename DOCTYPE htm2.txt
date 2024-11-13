@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Participant</title></head>
+<body>
+    <h1>Edit Participant</h1>
+    <form action="/participant" method="post">
+        <input type="hidden" name="_method" value="put" />
+        <input type="hidden" name="id" value="${participant.id}" />
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="${participant.name}" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="${participant.email}" required />
+        <button type="submit">Update Participant</button>
+    </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head><title>Edit Batch</title></head>
+<body>
+    <h1>Edit Batch</h1>
+    <form action="/batch" method="post">
+        <input type="hidden" name="_method" value="put" />
+        <input type="hidden" name="id" value="${batch.id}" />
+        <label for="batchName">Batch Name:</label>
+        <input type="text" id="batchName" name="batchName" value="${batch.batchName}" required />
+        <label for="instructor">Instructor:</label>
+        <input type="text" id="instructor" name="instructor" value="${batch.instructor}" required />
+        <button type="submit">Update Batch</button>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
