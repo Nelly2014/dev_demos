@@ -1,0 +1,9 @@
+Create a Dynamic Web Project in Eclipse and configure Maven
+2. Create Java Classes for participants and batches
+3. Create Servlets for participants and batches related to communication
+4. Create HTML Pages for CRUD operations related to batches and
+participants
+5. Perform CRUD operations using database methods using JDBC
+6. Create JSP Pages for query parameters
+7. Build and Run the Project on the Apache Tomcat web server
+8. Package the project as a Jar file using Maven Package Goal
