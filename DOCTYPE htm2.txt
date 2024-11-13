@@ -40,7 +40,66 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Management</title>
+</head>
+<body>
 
+    <h1>Batch Management</h1>
+
+    <!-- Form to Add a New Batch -->
+    <h2>Create New Batch</h2>
+    <form action="BatchServlet" method="post">
+        <input type="hidden" name="action" value="create">
+        <label for="batchName">Batch Name:</label>
+        <input type="text" id="batchName" name="batchName" required>
+        <br>
+        <label for="instructor">Instructor:</label>
+        <input type="text" id="instructor" name="instructor" required>
+        <br>
+        <button type="submit">Add Batch</button>
+    </form>
+
+    <hr>
+
+    <!-- Form to Update an Existing Batch -->
+    <h2>Update Batch</h2>
+    <form action="BatchServlet" method="post">
+        <input type="hidden" name="action" value="update">
+        <label for="batchId">Batch ID:</label>
+        <input type="number" id="batchId" name="batchId" required>
+        <br>
+        <label for="batchName">New Batch Name:</label>
+        <input type="text" id="batchName" name="batchName" required>
+        <br>
+        <label for="instructor">New Instructor:</label>
+        <input type="text" id="instructor" name="instructor" required>
+        <br>
+        <button type="submit">Update Batch</button>
+    </form>
+
+    <hr>
+
+    <!-- Form to Delete an Existing Batch -->
+    <h2>Delete Batch</h2>
+    <form action="BatchServlet" method="post">
+        <input type="hidden" name="action" value="delete">
+        <label for="batchId">Batch ID:</label>
+        <input type="number" id="batchId" name="batchId" required>
+        <br>
+        <button type="submit">Delete Batch</button>
+    </form>
+
+    <hr>
+
+    <!-- Form to View All Batches -->
+    <h2>View All Batches</h2>
+    <form action="BatchServlet" method="get">
+        <input type="hidden" name="action" value="
 
 
 
