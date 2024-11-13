@@ -105,4 +105,72 @@
 
 
 
+package com.example.database;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.SQLException;
+
+public class DatabaseSetup {
+
+    private static final String URL = "jdbc:mysql://localhost:3306/";
+    private static final String USER = "root"; 
+    private static final String PASSWORD = "password"; 
+
+    public static void main(String[] args) {
+        try {
+            createDatabase();
+            Connection connection = DriverManager.getConnection(URL + "participant_batch_management", USER, PASSWORD);
+            createTables(connection);
+            System.out.println("Database and tables created successfully.");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void createDatabase() {
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement statement = connection.createStatement()) {
+
+            String createDatabaseSQL = "CREATE DATABASE IF NOT EXISTS participant_batch_management";
+            statement.executeUpdate(createDatabaseSQL);
+            System.out.println("Database created successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void createTables(Connection connection) {
+        try (Statement statement = connection.createStatement()) {
+            String createParticipantsTableSQL = "CREATE TABLE IF NOT EXISTS participants ("
+                    + "id INT AUTO_INCREMENT PRIMARY KEY, "
+                    + "name VARCHAR(100) NOT NULL, "
+                    + "email VARCHAR(100) NOT NULL UNIQUE"
+                    + ")";
+            statement.executeUpdate(createParticipantsTableSQL);
+            System.out.println("Participants table created successfully.");
+
+            String createBatchesTableSQL = "CREATE TABLE IF NOT EXISTS batches ("
+                    + "id INT AUTO_INCREMENT PRIMARY KEY, "
+                    + "batchName VARCHAR(100) NOT NULL, "
+                    + "instructor VARCHAR(100) NOT NULL"
+                    + ")";
+            statement.executeUpdate(createBatchesTableSQL);
+            System.out.println("Batches table created successfully.");
+
+            String createParticipantBatchesTableSQL = "CREATE TABLE IF NOT EXISTS participant_batches ("
+                    + "participant_id INT, "
+                    + "batch_id INT, "
+                    + "PRIMARY KEY (participant_id, batch_id), "
+                    + "FOREIGN KEY (participant_id) REFERENCES participants(id) ON DELETE CASCADE, "
+                    + "FOREIGN KEY (batch_id) REFERENCES batches(id) ON DELETE CASCADE"
+                    + ")";
+            statement.executeUpdate(createParticipantBatchesTableSQL);
+            System.out.println("Participant_Batches table created successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
