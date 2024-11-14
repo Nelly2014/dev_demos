@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ice Cream Shop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>Welcome to Sweet Scoops Ice Cream</h1>
+    <p>The best place to find your favorite flavors!</p>
+  </header>
+
+  <!-- Ice Cream Menu -->
+  <section class="menu">
+    <h2>Our Flavors</h2>
+
+    <div class="flavor">
+      <img src="chocolate.png" alt="Chocolate Ice Cream">
+      <h3>Chocolate</h3>
+      <p>A rich and creamy classic. $3.50</p>
+      <button onclick="addToCart('Chocolate')">Add to Cart</button>
+    </div>
+
+    <div class="flavor">
+      <img src="vanilla.png" alt="Vanilla Ice Cream">
+      <h3>Vanilla</h3>
+      <p>Smooth and sweet vanilla. $3.00</p>
+      <button onclick="addToCart('Vanilla')">Add to Cart</button>
+    </div>
+
+    <div class="flavor">
+      <img src="strawberry.png" alt="Strawberry Ice Cream">
+      <h3>Strawberry</h3>
+      <p>Fresh strawberry flavor. $3.50</p>
+      <button onclick="addToCart('Strawberry')">Add to Cart</button>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="cart">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <button onclick="checkout()">Checkout</button>
+  </section>
+
+  <!-- Contact Form -->
+  <footer class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </footer>
+
+  <!-- Creator's Name -->
+  <footer class="creator">
+    <p>Website created by [Neliswa Sililo]</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
