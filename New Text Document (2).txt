@@ -1,0 +1,26 @@
+package jbbc;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.Connection;
+public class JDBC {
+
+	public static void main(String[] args) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student","root","2014@Unako");
+		 System.out.println("Connection created");
+		 String query ="create table learner(rollno int,name VARCHAR(20),grade VARCHAR(10))";
+		Statement st = con.createStatement();
+		System.out.println("Statement created");
+		st.execute(query);
+		System.out.println("Table created");
+				
+		}
+		
+		catch (Exception e){
+			System.out.println(e);
+		}
+
+	}
+
+}
