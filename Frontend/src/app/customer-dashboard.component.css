@@ -1,0 +1,41 @@
+.dashboard-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .products-section, .cart-summary {
+    margin-bottom: 20px;
+  }
+  
+  .product-list {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  button {
+    margin: 5px 0;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
