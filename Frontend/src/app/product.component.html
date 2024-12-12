@@ -1,0 +1,35 @@
+<!-- product.component.html -->
+<div class="product-container">
+    <h1>Products</h1>
+  
+    <!-- Button to add a new product -->
+    <button (click)="onAddProduct()">Add New Product</button>
+  
+    <!-- Table to display products -->
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.brand }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.category?.name }}</td>  <!-- Assuming category is an object -->
+          <td>
+            <button (click)="onEditProduct(product.id)">Edit</button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

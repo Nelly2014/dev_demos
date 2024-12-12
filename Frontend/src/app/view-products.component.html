@@ -1,0 +1,16 @@
+<div *ngIf="products">
+  <h1>Product Details</h1>
+  <p><strong>Name:</strong> {{ products.name }}</p>
+  <p><strong>Brand:</strong> {{ products.brand }}</p>
+  <p><strong>Price:</strong> ${{ products.price }}</p>
+  <p><strong>Quantity:</strong> {{ products.quantity }}</p>
+  <p><strong>Category:</strong> {{ products.category?.name || 'N/A' }}</p>
+  <div *ngIf="products.image">
+    <strong>Image:</strong>
+    <img [src]="products.image" alt="{{ products.name }}" style="max-width: 200px;"/>
+  </div>
+  <button (click)="goBack()">Back to Products</button>
+</div>
+<div *ngIf="!products">
+  <p>Loading product details...</p>
+</div>
