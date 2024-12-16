@@ -1,0 +1,19 @@
+<div>
+    <h1>Category Management</h1>
+  
+    <!-- Form to add a category -->
+    <div>
+      <h3>Add a Category</h3>
+      <input type="text" [(ngModel)]="categoryName" placeholder="Category Name">
+      <button (click)="addCategory()">Add Category</button>
+    </div>
+  
+    <!-- List of existing categories -->
+    <div>
+      <h3>Existing Categories</h3>
+      <ul>
+        <li *ngFor="let category of categories">{{ category.name }}</li>
+      </ul>
+    </div>
+  </div>
+  
