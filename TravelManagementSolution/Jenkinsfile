@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
         stage('Dockerize') {
             steps {
-                sh 'docker build -t travelmanagementsolution .'
+                bat 'docker build -t travelmanagementsolution .'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 9090:9090 travelmanagementsolution'
+                bat 'docker run -d -p 9090:9090 travelmanagementsolution'
             }
         }
     }
