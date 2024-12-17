@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat 'docker run -d -p 9090:9090 travelmanagementsolution'
+                bat 'docker run -d -p 9191:8080 travelmanagementsolution'
             }
         }
     }
