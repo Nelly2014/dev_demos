@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                bat 'mvn clean install'
+            }
+        }
+        stage('Dockerize') {
+            steps {
+                bat 'docker build -t CabBookingApp .'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                bat 'docker run -d -p 9191:8080 CabBookingApp'
+            }
+        }
+    }
+}
