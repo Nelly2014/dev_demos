@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Fare</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 300px;
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculate Cab Fare</h1>
+    <form action="/calculate-fare" method="post">
+        <label for="distance">Enter Distance (in km):</label>
+        <input type="number" id="distance" name="distance" required>
+        <button type="submit">Calculate Fare</button>
+    </form>
+
+    <div class="result">
+        <p>
+            <strong>Fare:</strong> 
+            <span id="fareResult">${fare}</span> 
+        </p>
+    </div>
+</body>
+</html>
